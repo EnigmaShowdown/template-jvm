@@ -3,6 +3,10 @@ apply plugin: 'application'
 
 application {
     mainClass = "com.enigmashowdown.visual.Lwjgl3Launcher"
+    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+        // -XstartOnFirstThread is needed for Mac OS https://github.com/EnigmaShowdown/enigmashowdown/issues/15
+        applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+    }
 }
 
 dependencies {
@@ -16,8 +20,8 @@ dependencies {
 tasks.register('dist', Jar) {
     with jar
     dependsOn classes
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
     from {
-        duplicatesStrategy DuplicatesStrategy.EXCLUDE
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 

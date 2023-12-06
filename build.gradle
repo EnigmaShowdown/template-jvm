@@ -1,6 +1,7 @@
 buildscript {
     ext {
-        enigmashowdownVersion = "40357c70ed33606f529e578e4aaa7938b3d827e5".substring(0, 10)
+//        enigmashowdownVersion = "40357c70ed33606f529e578e4aaa7938b3d827e5".substring(0, 10)
+        enigmashowdownVersion = "0.1.0"
         gdxVersion = "1.12.1"
 
 
